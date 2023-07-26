@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="kr">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <title>Stock Information</title>
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+      color: #343a40;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      margin-top: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #007bff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    #clock {
+      font-size: 20px;
+      text-align: center;
+      font-weight: bold;
+      color: #007bff;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .table-container {
+      overflow-x: auto;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #dee2e6;
+    }
+
+    th {
+      background-color: #007bff;
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    th:before {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 8px solid #007bff;
+    }
+
+    tbody tr:hover {
+      background-color: #f2f2f2;
+    }
+
+    .pagination {
+      justify-content: center;
+      margin-top: 20px;
+    }
+  </style>
+
+</head>
+<body>
+  <div class="container">
+    <h1>KOSPI 주식 정보</h1>
+    <p>대한민국 표준 시각 (KST)</p>
+    <p id="clock">Here will be date | time</p>
+
+    <!-- Search bar -->
+    <!-- Search bar -->
+    <div class="input-group mb-3">
+      <input type="text" id="searchInput" class="form-control" placeholder="Search 종목명">
+    </div>
+
+    <div class="table-container">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Index</th>
+            <th scope="col">종목명</th>
+            <th scope="col">종목코드</th>
+            <th scope="col">RSI</th>
+            <th scope="col">MACD</th>
+            <th scope="col">MFI</th>
+            <th scope="col">ERI BULL</th>
+            <th scope="col">KER</th>
+            <th scope="col">Stoch RSI</th>
+            <th scope="col">재무상태(0, 1, 2)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for stock in data %}
+          <tr>
+            <th scope="row">{{ loop.index }}</th>
+            <td>{{ stock["stock_name"] }}</td>
+            <td>{{ stock["ticker"] }}</td>
+            <td>{{ stock["rsi"] }}</td>
+            <td>{{ stock["macd"] }}</td>
+            <td>{{ stock["mfi"] }}</td>
+            <td>{{ stock["eribull"] }}</td>
+            <td>{{ stock["ker"] }}</td>
+            <td>{{ stock["stochrsi"] }}</td>
+            <td>{{ stock["revenue_status"] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination section -->
+     <nav>
+      <ul class="pagination" id="pagination">
+        <li class="page-item" id="prev-page">
+          <a class="page-link" href="#" onclick="goToPage(currentPage - 1)" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <!-- Pagination will be added dynamically using JavaScript -->
+        <li class="page-item" id="next-page">
+          <a class="page-link" href="#" onclick="goToPage(currentPage + 1)" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+
+  <!-- Optional JavaScript -->
+  <script>
+    var clock = document.getElementById("clock");
+    var currentPage = 1;
+    var rowsPerPage = 30;
+    var totalRows = document.querySelectorAll("tbody tr").length;
+    var totalPages = Math.ceil(totalRows / rowsPerPage);
+
+    // Function to display the appropriate rows based on the current page
+    function displayRows() {
+      var rows = document.querySelectorAll("tbody tr");
+      var startIndex = (currentPage - 1) * rowsPerPage;
+      var endIndex = startIndex + rowsPerPage;
+
+      rows.forEach((row, index) => {
+        if (index >= startIndex && index < endIndex) {
+          row.style.display = "table-row";
+        } else {
+          row.style.display = "none";
+        }
+      });
+    }
+
+    // Function to update the pagination links
+    function updatePagination() {
+      var paginationContainer = document.getElementById("pagination");
+      var paginationHTML = '';
+
+      var maxPagesToShow = 10;
+      var halfMaxPages = Math.floor(maxPagesToShow / 2);
+      var startPage = Math.max(1, currentPage - halfMaxPages);
+      var endPage = Math.min(startPage + maxPagesToShow - 1, totalPages);
+
+      if (startPage !== 1) {
+        paginationHTML += `
+          <li class="page-item">
+            <a class="page-link" href="#" onclick="goToPage(1)">1</a>
+          </li>
+        `;
+        if (startPage !== 2) {
+          paginationHTML += `
+            <li class="page-item disabled">
+              <a class="page-link" href="#">...</a>
+            </li>
+          `;
+        }
+      }
+
+      for (var i = startPage; i <= endPage; i++) {
+        if (i === currentPage) {
+          paginationHTML += `
+            <li class="page-item active">
+              <a class="page-link" href="#" onclick="goToPage(${i})">${i}</a>
+            </li>
+          `;
+        } else {
+          paginationHTML += `
+            <li class="page-item">
+              <a class="page-link" href="#" onclick="goToPage(${i})">${i}</a>
+            </li>
+          `;
+        }
+      }
+
+      if (endPage !== totalPages) {
+        if (endPage !== totalPages - 1) {
+          paginationHTML += `
+            <li class="page-item disabled">
+              <a class="page-link" href="#">...</a>
+            </li>
+          `;
+        }
+        paginationHTML += `
+          <li class="page-item">
+            <a class="page-link" href="#" onclick="goToPage(${totalPages})">${totalPages}</a>
+          </li>
+        `;
+      }
+
+      paginationContainer.innerHTML = paginationHTML;
+    }
+
+    // Function to navigate to a specific page
+    function goToPage(pageNumber) {
+      if (pageNumber >= 1 && pageNumber <= totalPages) {
+        currentPage = pageNumber;
+        displayRows();
+        updatePagination();
+      }
+    }
+
+    // Function for dynamic search
+    function searchStock() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("searchInput");
+      filter = input.value.toUpperCase();
+      table = document.querySelector("table");
+      tr = table.getElementsByTagName("tr");
+
+      for (i = 1; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0]; // Index 1 for "종목명" column
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+
+    // Event listener for dynamic search
+    document.getElementById("searchInput").addEventListener("input", searchStock);
+
+
+    // Initial setup
+    displayRows();
+    updatePagination();
+
+    setInterval(() => {
+      fetch("{{ url_for('time_feed') }}")
+        .then(response => {
+          response.text().then(t => {
+            clock.innerHTML = t;
+          });
+        });
+    }, 1000);
+  </script>
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+</html>
