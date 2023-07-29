@@ -8660,11 +8660,12 @@ def signup_success():
     return render_template('signup_success.html')
 
 # signup_failure.html - 회원가입 실패 페이지
-@app.route('/signup_failure')
+"""@app.route('/signup_failure')
 def signup_failure():
     return render_template('signup_failure.html')
+"""
 
-# login.html - 로그인 페이지 
+# login.html - 로그인 페이지
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -8714,10 +8715,15 @@ def change_password():
     return render_template('change_password.html')
 
 
-# stats.html
+#  stats.html - KOSPI 모든 주가 정보 - RAW DATA (주가랑 모든 요소 추가 해야 할듯)
 @app.route('/stats')
 def stats():
 	return render_template('stats.html', data=total_data)
+
+# ai_forcast.html - streamlit 웹사이트
+@app.route('/ai_forecast')
+def ai_forecast():
+	return render_template('ai_forecast.html')
 
 @app.route('/time_feed')
 def time_feed():

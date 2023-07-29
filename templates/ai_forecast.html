@@ -22,7 +22,7 @@
     <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
 
     <!-- site metas -->
-    <title>주식머신</title>
+    <title>주식머신-AI주가예측</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content=""> 
@@ -52,6 +52,24 @@
             color: green;
             font-size: 20px;
         }
+
+
+        a.bimage_kr {
+          background-image: url(/static/images/ai_forecast_button_kr.png); /* 16px x 16px */
+          background-color: transparent; /* make the button transparent */
+          background-repeat: no-repeat;  /* make the background image appear only once */
+          border: none;           /* assuming we don't want any borders */
+          cursor: pointer;        /* make the cursor like hovering over an <a> element */
+        }
+
+        a.bimage_us {
+          background-image: url(/static/images/ai_forecast_button_us.png); /* 16px x 16px */
+          background-color: transparent; /* make the button transparent */
+          background-repeat: no-repeat;  /* make the background image appear only once */
+          border: none;           /* assuming we don't want any borders */
+          cursor: pointer;        /* make the cursor like hovering over an <a> element */
+        }
+
     </style>
 
 
@@ -82,9 +100,11 @@
                     <li class="nav-item">
                       <a class="nav-link" href="{{ url_for('signup') }}">회원가입</a>
                     </li>
+                    
                     <li class="nav-item">
                       <a class="nav-link" href="{{ url_for('login') }}">로그인</a>
                     </li>
+                    
                     <li class="nav-item">
                       <a class="nav-link" href="#"><img src="/static/images/search-icon.png"></a>
                     </li>
@@ -97,11 +117,16 @@
     <!--banner section start -->
     <div class="banner_section layout_padding">
         <div class="container">
-            <h1 class="banner_taital" style="font-family: '궁서체', cursive;">주 식 머 신</h1>
-            <h2 class="free_text">Free Multipurpose Responsive 
-            Landing Page </h2>
+            <h1 class="banner_taital" style="font-family: '궁서체', cursive;">AI 주가 예측</h1>
+            <h2 class="free_text">KOSPI, KOSDAQ, NASDAQ, S&P500, NYSE 모든 주식의 3년 미래를 예측해보세요 </h2>
             <div class="read_bt">
-                <div class="read_text"><a href="{{ url_for('stats') }}" style="font-family: 'Bagel Fat One', cursive;">서비스 구경하기</a></div>
+                <div class="read_text">
+                  <a href="https://krstocks.streamlit.app" class="bimage_kr" target="_blank" style="font-family: 'Bagel Fat One', cursive;">.</a>
+                </div>
+                
+                <div class="read_text">
+                  <a href="https://usstocks.streamlit.app" class="bimage_us" target="_blank" style="font-family: 'Bagel Fat One', cursive;" >.</a>
+                </div>
             </div>
         </div>
     </div>
@@ -154,36 +179,7 @@
         </div>
     </div>
     <!--service section end -->
-    <!--contact section start -->
-    <div class="contact_section layout_padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h1 class="contact_text">Requeste a call back</h1>
-                    <div class="contact_main">
-                        <div class="mail_section">
-                            <label for="username">Username:</label>
-                            <input type="text" class="mail_text" id="username" placeholder="Name" name="username" required>
-                            
-                            <label for="password">Password:</label>
-                            <input type="password" class="mail_text" id="password" name="password" required><br>
-
-                            <input type="Name" class="mail_text" placeholder="Email" name="Email">
-                            
-                            <div class="send_bt">
-                                <!-- <div class="send_text"><a href="#">SEND</a></div> -->
-                                <input type="submit" value="Signup">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="contact_bg"><img src="/static/images/contact-bg.png"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--contact section end -->
+    
     <!--client section start -->
     <div class="client_section layout_padding">
         <div class="container">
@@ -207,18 +203,9 @@
                       <span class="input-group-text" id="basic-addon2">subscribe Now</span>
                     </div>
                 </div>
-                <h1 class="year_text">2020</h1>
-                <h1 class="landing_text">Free Multipurpose Responsive  Landing Page </h1>
+                <h1 class="year_text">주식머신</h1>
             </div>
-            <div class="social_icon">
-                <ul>
-                    <li><a href="#"><img src="/static/images/fb-icon.png"></a></li>
-                    <li><a href="#"><img src="/static/images/twitter-icon.png"></a></li>
-                    <li><a href="#"><img src="/static/images/linkdin-icon.png"></a></li>
-                    <li><a href="#"><img src="/static/images/instagram-icon.png"></a></li>
-                    <li><a href="#"><img src="/static/images/youtub-icon.png"></a></li>
-                </ul>
-            </div>
+
         </div>
     </div>
     <!--footer section end -->
@@ -227,7 +214,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <p class="copyright_text">2020 All Rights Reserved Design by <a href="https://html.design/"> Free Html Templates</p>
+                    <p class="copyright_text">2023 All Rights Reserved Design by 주식머신</p>
                 </div>
             </div>
         </div>

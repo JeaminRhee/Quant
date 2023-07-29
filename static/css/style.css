@@ -34,6 +34,8 @@
 
 html {
      scroll-behavior: smooth;
+     font-family: 'Bagel Fat One', cursive;
+     color: white;
 }
 
 body {
@@ -637,3 +639,11 @@ input.form-control::placeholder {
 .copyright a {
     color: #040404;
 }
+
+
+
+
+
+
+
+
