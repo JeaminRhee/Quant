@@ -4,6 +4,10 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <title>Stock Information</title>
@@ -78,11 +82,11 @@
       margin-top: 20px;
     }
   </style>
-
 </head>
+
 <body>
   <div class="container">
-    <h1>KOSPI 주식 정보</h1>
+    <h1>한국 미국 주식 정보</h1>
     <p>대한민국 표준 시각 (KST)</p>
     <p id="clock">Here will be date | time</p>
 
@@ -99,12 +103,58 @@
             <th scope="col">Index</th>
             <th scope="col">종목명</th>
             <th scope="col">종목코드</th>
+            <th scope="col">주가</th>
             <th scope="col">RSI</th>
             <th scope="col">MACD</th>
             <th scope="col">MFI</th>
             <th scope="col">ERI BULL</th>
             <th scope="col">KER</th>
             <th scope="col">Stoch RSI</th>
+            <th scope="col">wt1</th>
+            <th scope="col">close_7_smma</th>
+            <th scope="col">close_10_roc</th>
+            <th scope="col">high_5_roc</th>
+            <th scope="col">close_10_mad</th>
+            <th scope="col">trix</th>
+            <th scope="col">tema</th>
+            <th scope="col">vr</th>
+            <th scope="col">wr</th>
+            <th scope="col">cci</th>
+            <th scope="col">atr</th>
+            <th scope="col">supertrend</th>
+            <th scope="col">pdi</th>
+            <th scope="col">ndi</th>
+            <th scope="col">adx</th>
+            <th scope="col">kdjk</th>
+            <th scope="col">kdjd</th>
+            <th scope="col">kdjj</th>
+            <th scope="col">cr</th>
+            <th scope="col">boll_ub</th>
+            <th scope="col">boll_lb</th>
+            <th scope="col">ppo</th>
+            <th scope="col">ppos</th>
+            <th scope="col">vwma</th>
+            <th scope="col">chop</th>
+            <th scope="col">eribull</th>
+            <th scope="col">eribear</th>
+            <th scope="col">eribull_5</th>
+            <th scope="col">eribear_5</th>
+            <th scope="col">high_5_ker</th>
+            <th scope="col">aroon</th>
+            <th scope="col">coppock</th>
+            <th scope="col">ftr</th>
+            <th scope="col">rvgi</th>
+            <th scope="col">rvgis</th>
+            <th scope="col">rvgi_5</th>
+            <th scope="col">inertia</th>
+            <th scope="col">inertia_10</th>
+            <th scope="col">kst</th>
+            <th scope="col">pgo</th>
+            <th scope="col">psl</th>
+            <th scope="col">pvo</th>
+            <th scope="col">qqe</th>
+
+
             <th scope="col">재무상태(0, 1, 2)</th>
           </tr>
         </thead>
@@ -114,12 +164,56 @@
             <th scope="row">{{ loop.index }}</th>
             <td>{{ stock["stock_name"] }}</td>
             <td>{{ stock["ticker"] }}</td>
+            <td>{{ stock["price"] }}</td>
             <td>{{ stock["rsi"] }}</td>
             <td>{{ stock["macd"] }}</td>
             <td>{{ stock["mfi"] }}</td>
             <td>{{ stock["eribull"] }}</td>
             <td>{{ stock["ker"] }}</td>
             <td>{{ stock["stochrsi"] }}</td>
+            <td>{{ stock["wt1"] }}</td>
+            <td>{{ stock["close_7_smma"] }}</td>
+            <td>{{ stock["close_10_roc"] }}</td>
+            <td>{{ stock["high_5_roc"] }}</td>
+            <td>{{ stock["close_10_mad"] }}</td>
+            <td>{{ stock["trix"] }}</td>
+            <td>{{ stock["tema"] }}</td>
+            <td>{{ stock["vr"] }}</td>
+            <td>{{ stock["wr"] }}</td>
+            <td>{{ stock["cci"] }}</td>
+            <td>{{ stock["atr"] }}</td>
+            <td>{{ stock["supertrend"] }}</td>
+            <td>{{ stock["pdi"] }}</td>
+            <td>{{ stock["ndi"] }}</td>
+            <td>{{ stock["adx"] }}</td>
+            <td>{{ stock["kdjk"] }}</td>
+            <td>{{ stock["kdjd"] }}</td>
+            <td>{{ stock["kdjj"] }}</td>
+            <td>{{ stock["cr"] }}</td>
+            <td>{{ stock["boll_ub"] }}</td>
+            <td>{{ stock["boll_lb"] }}</td>
+            <td>{{ stock["ppo"] }}</td>
+            <td>{{ stock["ppos"] }}</td>
+            <td>{{ stock["vwma"] }}</td>
+            <td>{{ stock["chop"] }}</td>
+            <td>{{ stock["eribull"] }}</td>
+            <td>{{ stock["eribear"] }}</td>
+            <td>{{ stock["eribull_5"] }}</td>
+            <td>{{ stock["eribear_5"] }}</td>
+            <td>{{ stock["high_5_ker"] }}</td>
+            <td>{{ stock["aroon"] }}</td>
+            <td>{{ stock["coppock"] }}</td>
+            <td>{{ stock["ftr"] }}</td>
+            <td>{{ stock["rvgi"] }}</td>
+            <td>{{ stock["rvgis"] }}</td>
+            <td>{{ stock["rvgi_5"] }}</td>
+            <td>{{ stock["inertia"] }}</td>
+            <td>{{ stock["inertia_10"] }}</td>
+            <td>{{ stock["kst"] }}</td>
+            <td>{{ stock["pgo"] }}</td>
+            <td>{{ stock["psl"] }}</td>
+            <td>{{ stock["pvo"] }}</td>
+            <td>{{ stock["qqe"] }}</td>
             <td>{{ stock["revenue_status"] }}</td>
           </tr>
           {% endfor %}
@@ -150,7 +244,7 @@
   <script>
     var clock = document.getElementById("clock");
     var currentPage = 1;
-    var rowsPerPage = 30;
+    var rowsPerPage = 25;
     var totalRows = document.querySelectorAll("tbody tr").length;
     var totalPages = Math.ceil(totalRows / rowsPerPage);
 
@@ -174,7 +268,7 @@
       var paginationContainer = document.getElementById("pagination");
       var paginationHTML = '';
 
-      var maxPagesToShow = 10;
+      var maxPagesToShow = 7;
       var halfMaxPages = Math.floor(maxPagesToShow / 2);
       var startPage = Math.max(1, currentPage - halfMaxPages);
       var endPage = Math.min(startPage + maxPagesToShow - 1, totalPages);

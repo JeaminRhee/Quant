@@ -85,9 +85,7 @@
                     <li class="nav-item">
                       <a class="nav-link" href="{{ url_for('login') }}">로그인</a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#"><img src="/static/images/search-icon.png"></a>
-                    </li>
+                    
                   </ul>
                 </div>
             </nav>
@@ -98,10 +96,9 @@
     <div class="banner_section layout_padding">
         <div class="container">
             <h1 class="banner_taital" style="font-family: '궁서체', cursive;">주 식 머 신</h1>
-            <h2 class="free_text">Free Multipurpose Responsive 
-            Landing Page </h2>
+            <h2 class="free_text" style="font-family: '궁서체', cursive;"> 100% 무료 AI 퀀트 투자 어드바이저 서비스</h2>
             <div class="read_bt">
-                <div class="read_text"><a href="{{ url_for('stats') }}" style="font-family: 'Bagel Fat One', cursive;">서비스 구경하기</a></div>
+                <div class="read_text"><a href="{{ url_for('ai_forecast') }}" style="font-family: 'Bagel Fat One', cursive;">서비스 구경하기</a></div>
             </div>
         </div>
     </div>
@@ -114,12 +111,15 @@
     <!--about section start -->
     <div class="about_section">
         <div class="container">
-            <h1 class="about_text">about web elements</h1>
-            <p class="lorem_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore </p>
-            <div class="about_bg"><img src="/static/images/about-bg.png"></div>
-            <p class="lorem_text">orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit</p>
+            <h1 class="about_text">주식머신</h1>
+            <p class="lorem_text"> 팀 주식머신의 비전은 간단합니다. 모든 투자자가 양질의 투자 정보를 접근할 수 있도록 합니다. 유사투자자문업 사기 사건 사고를 보고만 있을 수 없었습니다. "퀀트 수식이 뭐라고 5,000만 원에 파는거야?" 이거 우리가 해결하자.</p>
+
+            <p class="lorem_text"> 팀 주식머신은 유사투자자문업 사기 피해를 예방하고자 시작 되었습니다. 저희는 고객들에게 최고의 AI 퀀트 투자 서비스를 제공할 것을 약속합니다.</p>
+
+            <div class="about_bg"><img src="/static/images/주식머신_메인.jpg"></div>
+            <p class="lorem_text">더 이상 유사투자자문업에 당하지 마시고 숫자로 이야기하는 100% 무료 AI 퀀트 서비스 주식머신과 함께 하세요!</p>
             <div class="read_bt_main">
-                <div class="read_text_2"><a href="#">Read More</a></div>
+                <div class="read_text_2"><a href="#">퀀트 서비스 바로가기</a></div>
             </div>
         </div>
     </div>
@@ -127,71 +127,38 @@
     <!--service section start -->
     <div class="service_section layout_padding">
         <div class="container">
-            <h1 class="about_text">services</h1>
-            <p class="ipsum_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliq</p>
+            <h1 class="about_text">주식머신 서비스</h1>
             <div class="service_section_2">
                 <div class="row">
                     <div class="col-sm-12 col-lg-4">
                         <div class="icon_1"><img src="/static/images/icon-1.png"></div>
-                        <h1 class="website_text">website element</h1>
-                        <p class="dolor_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliq</p>
+                        <h1 class="website_text"><a href="{{ url_for('home') }}">실시간 주식 분석</a></h1>
+                        <p class="dolor_text">주식을 분석하여 주식의 상태를 분류합니다 (과매수, 과매도, 상승 모멘텀, 하락 모멘텀, 저평가, 고평가, Top Losers, 계절성 등)</p>
                     </div>
                     <div class="col-sm-12 col-lg-4">
                         <div class="icon_1"><img src="/static/images/icon-2.png"></div>
-                        <h1 class="website_text">applicatinos element</h1>
-                        <p class="dolor_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliq</p>
+                        <h1 class="website_text"><a href="{{ url_for('raw_data') }}">퀀트 서비스</a></h1>
+                        <p class="dolor_text">10+가 넘는 검증된 퀀트 수식과 추출된 주식을 무료로 제공합니다. 퀀트 수식을 1,000만원 넘게 사고 파는 것을 보고 이해할 수 없었습니다.</p>
                     </div>
                     <div class="col-sm-12 col-lg-4">
                         <div class="icon_1"><img src="/static/images/icon-3.png"></div>
-                        <h1 class="website_text">design element</h1>
-                        <p class="dolor_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliq</p>
+                        <h1 class="website_text"><a href="{{ url_for('ai_forecast') }}">AI 주가예측</a></h1>
+                        <p class="dolor_text">META Data Science Team에서 개발한 시계열 분석 도구를 활용하여 10,000+ 기업의 미래와 계절성을 예측 분석합니다.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!--service section end -->
-    <!--contact section start -->
-    <div class="contact_section layout_padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h1 class="contact_text">Requeste a call back</h1>
-                    <div class="contact_main">
-                        <div class="mail_section">
-                            <label for="username">Username:</label>
-                            <input type="text" class="mail_text" id="username" placeholder="Name" name="username" required>
-                            
-                            <label for="password">Password:</label>
-                            <input type="password" class="mail_text" id="password" name="password" required><br>
-
-                            <input type="Name" class="mail_text" placeholder="Email" name="Email">
-                            
-                            <div class="send_bt">
-                                <!-- <div class="send_text"><a href="#">SEND</a></div> -->
-                                <input type="submit" value="Signup">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="contact_bg"><img src="/static/images/contact-bg.png"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--contact section end -->
+    
     <!--client section start -->
     <div class="client_section layout_padding">
         <div class="container">
-            <h1 class="about_text">what is say clients</h1>
-            <p class="ipsum_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliq</p>
+            <h1 class="about_text">사용자는 묻습니다</h1>
+            <p class="ipsum_text">이게 정말 무료냐고요. 100% 무료입니다.</p>
             <div class="client_section_2 layout_padding">
-                <h1 class="client_text">Consectetur adipiscing </h1>
-                <p class="ipsum_text_2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim</p>
+                <h1 class="client_text"> 정말 믿을 수 없었어요 </h1>
+                <p class="ipsum_text_2">지금까지 구독해 온 유료 서비스보다 좋아요. 제가 왜 지금까지 유료 퀀트 서비스를 써왔는지 모르겠어요.. 그 수식이 얼마나 대단하다고 5,000만 원에 팔고.. 그걸 샀던 제가 정말 믿습니다..</p>
                 <div class="icon_4"><img src="/static/images/icon-4.png"></div>
             </div>
         </div>
@@ -201,24 +168,12 @@
     <div class="footer_section layout_padding">
         <div class="container">
             <div class="footer_main">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Enter your email" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                      <span class="input-group-text" id="basic-addon2">subscribe Now</span>
-                    </div>
-                </div>
-                <h1 class="year_text">2020</h1>
-                <h1 class="landing_text">Free Multipurpose Responsive  Landing Page </h1>
+                
+                <h1 class="year_text">주식머신</h1>
+                <h1 class="landing_text">100% 무료 AI 퀀트 서비스</h1>
+                <div class="read_text_2"><a href="{{ url_for('signup') }}">회원가입</a></div>
             </div>
-            <div class="social_icon">
-                <ul>
-                    <li><a href="#"><img src="/static/images/fb-icon.png"></a></li>
-                    <li><a href="#"><img src="/static/images/twitter-icon.png"></a></li>
-                    <li><a href="#"><img src="/static/images/linkdin-icon.png"></a></li>
-                    <li><a href="#"><img src="/static/images/instagram-icon.png"></a></li>
-                    <li><a href="#"><img src="/static/images/youtub-icon.png"></a></li>
-                </ul>
-            </div>
+           
         </div>
     </div>
     <!--footer section end -->
@@ -227,7 +182,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <p class="copyright_text">2020 All Rights Reserved Design by <a href="https://html.design/"> Free Html Templates</p>
+                    <p class="copyright_text">2023 All Rights Reserved Design by 주식머신</p>
                 </div>
             </div>
         </div>
